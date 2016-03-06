@@ -66,7 +66,7 @@ public class Main {
                     addNewRecord(idents, names, numbers, day, month, year);
                     break;
                 case 2:
-                    printSearchMenu(idents, names, numbers, day, month, year);
+                    print.printSearchMenu(idents, names, numbers, day, month, year);
                     break;
                 case 3:
                     print.printAllRecords(idents, names, numbers, day, month, year);
@@ -94,7 +94,6 @@ public class Main {
             }
         }
     }
-
 
     public static void addNewRecord(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
         System.out.println("Adding new contact");
@@ -138,41 +137,6 @@ public class Main {
         System.out.println("done");
         System.out.println();
     }
-
-    public static void printSearchMenu(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("1 for search by ID");
-            System.out.println("2 for search by name");
-            System.out.println("3 for search by number");
-            System.out.println("4 for search by date");
-            System.out.println("0 exit");
-            System.out.println();
-            int menu = Integer.valueOf(returnValidIntFromScanner());
-            switch (menu) {
-                case 0:
-                    break;
-                case 1:
-                    search.findCustomerId(idents, names, numbers, day, month, year);
-                    break;
-                case 2:
-                    search.findName(idents, names, numbers, day, month, year);
-                    break;
-                case 3:
-                    search.findNumber(idents, names, numbers, day, month, year);
-                    break;
-                case 4:
-                    search.findDate(idents, names, numbers, day, month, year);
-                    break;
-                default:
-                    System.out.println("wrong point in menu");
-                    break;
-            }
-        }
-    }
-
-
 
     public static void addingTest(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
         int count = 0;
@@ -219,8 +183,6 @@ public class Main {
             System.out.println("done");
         }
     }
-
-
 
 
     public static boolean isStringEmpty (String s)  {

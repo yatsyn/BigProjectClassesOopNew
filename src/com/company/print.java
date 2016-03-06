@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  * Created by ivan on 06.03.2016.
@@ -105,4 +106,38 @@ public class print {
         System.out.println();
         System.out.println();
     }
+
+    public static void printSearchMenu(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true) {
+            System.out.println("1 for search by ID");
+            System.out.println("2 for search by name");
+            System.out.println("3 for search by number");
+            System.out.println("4 for search by date");
+            System.out.println("0 exit");
+            System.out.println();
+            int menu = Integer.valueOf(Main.returnValidIntFromScanner());
+            switch (menu) {
+                case 0:
+                    break;
+                case 1:
+                    search.findCustomerId(idents, names, numbers, day, month, year);
+                    break;
+                case 2:
+                    search.findName(idents, names, numbers, day, month, year);
+                    break;
+                case 3:
+                    search.findNumber(idents, names, numbers, day, month, year);
+                    break;
+                case 4:
+                    search.findDate(idents, names, numbers, day, month, year);
+                    break;
+                default:
+                    System.out.println("wrong point in menu");
+                    break;
+            }
+        }
+    }
+
 }
