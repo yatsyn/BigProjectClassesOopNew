@@ -75,10 +75,31 @@ public class file {
             day = new int[Main.MAX];
         }
         return day;
-
-
     }
 
+    public static String bigStringForCsv(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
 
+        String s = "sep=,\n"+"ID" + Main.SEP + "NAMES" + Main.SEP + "NUMBERS" + Main.SEP + "YEAR" + Main.SEP + "MONTH" + Main.SEP + "DAY" + Main.NEW_LINE;
+
+        for (int i = 0; i < Main.MAX; i++) {
+            if (idents[i]) {
+                s += i + Main.SEP + names[i] + Main.SEP + numbers[i] + Main.SEP + year[i] + Main.SEP + month[i] + Main.SEP + day[i] + Main.NEW_LINE;
+            }
+        }
+        return s;
+    }
+
+    public static String dateToString(int y, int m, int d) {
+        String s = y + "-";
+        if (String.valueOf(m).length() == 1) {
+            s += "0";
+        }
+        s += m + "-";
+        if (d < 10) {
+            s += "0";
+        }
+        s += d;
+        return s;
+    }
 
 }
