@@ -5,7 +5,7 @@ import java.util.Scanner;
 /**
  * Created by ivan on 06.03.2016.
  */
-public class search {
+public class Search {
 
     public static int findFreeId(boolean[] idents) {
         for (int i = 0; i < idents.length; i++) {
@@ -21,13 +21,13 @@ public class search {
         Scanner scanner = new Scanner(System.in);
         System.out.println("enter ID please");
         id = Integer.valueOf(Main.returnValidIntFromScanner());
-        print.printHeader();
+        Print.printHeader();
         int checker = -1;
         int editId = 0;
 
         for (int i = 0; i < idents.length; i++) {
             if (idents[i] && id == i) {
-                print.printString(i, names, numbers, day, month, year);
+                Print.printString(i, names, numbers, day, month, year);
                 checker++;
                 editId = i;
             }
@@ -39,10 +39,10 @@ public class search {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Name?");
         String name = scanner.nextLine();
-        print.printHeader();
+        Print.printHeader();
         for (int i = 0; i < idents.length; i++) {
             if (idents[i] && name.equals(names[i])) {
-                print.printString(i, names, numbers, day, month, year);
+                Print.printString(i, names, numbers, day, month, year);
             }
         }
     }
@@ -51,16 +51,16 @@ public class search {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Number?");
         String Number = scanner.nextLine();
-        print.printHeader();
+        Print.printHeader();
         for (int i = 0; i < idents.length; i++) {
             if (idents[i] && Number.equals(numbers[i]))
-                print.printString(i, names, numbers, day, month, year);
+                Print.printString(i, names, numbers, day, month, year);
         }
         return;
     }
 
     public static void findDate(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
-        print.printHeader();
+        Print.printHeader();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Date of birthday:");
         System.out.println("day?");
@@ -71,7 +71,7 @@ public class search {
         int yearz = Integer.valueOf(Main.returnValidIntFromScanner());
         for (int i = 0; i < idents.length; i++) {
             if (idents[i] && dayz == day[i] && monthz == month[i] && yearz == year[i])
-                print.printString(i, names, numbers, day, month, year);
+                Print.printString(i, names, numbers, day, month, year);
 
         }
         System.out.println("error");

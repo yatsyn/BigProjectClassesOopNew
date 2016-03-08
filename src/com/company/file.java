@@ -5,7 +5,7 @@ import java.io.*;
 /**
  * Created by ivan on 01.03.2016.
  */
-public class file {
+public class File {
 
     public static String[] openFile(String fileName) throws IOException, ClassNotFoundException {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(fileName));
@@ -43,7 +43,7 @@ public class file {
     public static boolean[] initArrBoolFromFile(String fileName) throws IOException, ClassNotFoundException {
         boolean[] idents;
 
-        File fileBool = new File(fileName);
+        java.io.File fileBool = new java.io.File(fileName);
         if (fileBool.exists()) {
             idents = openFileBoo(fileName);
         } else {
@@ -55,7 +55,7 @@ public class file {
     public static String[] initArrStringFromFile(String fileName) throws IOException, ClassNotFoundException {
         String[] names;
 
-        File fileString = new File(fileName);
+        java.io.File fileString = new java.io.File(fileName);
         if (fileString.exists()) {
             names = openFile(fileName);
         } else {
@@ -68,7 +68,7 @@ public class file {
     public static int[] initArrIntFromFile(String fileName) throws IOException, ClassNotFoundException {
         int[] day;
 
-        File fileD = new File(fileName);
+        java.io.File fileD = new java.io.File(fileName);
         if (fileD.exists()) {
             day = openFileInt(fileName);
         } else {

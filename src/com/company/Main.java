@@ -3,44 +3,43 @@ package com.company;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
-import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
 
     public static int MAX = 1000;
-    public static final String FILE_ID = "file.i";
-    public static final String FILE_NAMES = "file.name";
-    public static final String FILE_NUMBERS = "file.numbers";
-    public static final String FILE_YEAR = "file.y";
-    public static final String FILE_MONTH = "file.m";
-    public static final String FILE_DAY = "file.d";
+    public static final String FILE_ID = "File.i";
+    public static final String FILE_NAMES = "File.name";
+    public static final String FILE_NUMBERS = "File.numbers";
+    public static final String FILE_YEAR = "File.y";
+    public static final String FILE_MONTH = "File.m";
+    public static final String FILE_DAY = "File.d";
     public static final String NEW_LINE = "\r\n";
     public static final String SEP = ",";
-    public static final String FILE_CSV = "file.csv";
+    public static final String FILE_CSV = "File.csv";
 
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Scanner scanner = new Scanner(System.in);
 
-        boolean[] idents = file.initArrBoolFromFile(FILE_ID);
-        String[] names = file.initArrStringFromFile(FILE_NAMES);
-        String[] numbers = file.initArrStringFromFile(FILE_NUMBERS);
-        int[] day = file.initArrIntFromFile(FILE_DAY);
-        int[] month = file.initArrIntFromFile(FILE_MONTH);
-        int[] year = file.initArrIntFromFile(FILE_YEAR);
+        boolean[] idents = File.initArrBoolFromFile(FILE_ID);
+        String[] names = File.initArrStringFromFile(FILE_NAMES);
+        String[] numbers = File.initArrStringFromFile(FILE_NUMBERS);
+        int[] day = File.initArrIntFromFile(FILE_DAY);
+        int[] month = File.initArrIntFromFile(FILE_MONTH);
+        int[] year = File.initArrIntFromFile(FILE_YEAR);
 
         while (true) {
             System.out.println("1 for adding");
-            System.out.println("2 for search");
-            System.out.println("3 print all");
-            System.out.println("4 print sorted menu");
+            System.out.println("2 for Search");
+            System.out.println("3 Print all");
+            System.out.println("4 Print sorted menu");
             System.out.println("5 for delete");
-            System.out.println("6 edit menu");
+            System.out.println("6 Edit menu");
             System.out.println("7 sort by date of birthday");
-            System.out.println("8 export to exel file");
+            System.out.println("8 export to exel File");
             System.out.println("9 for test account");
             System.out.println("0 exit");
             System.out.println();
@@ -55,36 +54,36 @@ public class Main {
 
             switch (menu) {
                 case 0:
-                    file.saveToFile(year, FILE_YEAR);
-                    file.saveToFile(month, FILE_MONTH);
-                    file.saveToFile(day, FILE_DAY);
-                    file.saveToFile(names, FILE_NAMES);
-                    file.saveToFile(numbers, FILE_NUMBERS);
-                    file.saveToFile(idents, FILE_ID);
+                    File.saveToFile(year, FILE_YEAR);
+                    File.saveToFile(month, FILE_MONTH);
+                    File.saveToFile(day, FILE_DAY);
+                    File.saveToFile(names, FILE_NAMES);
+                    File.saveToFile(numbers, FILE_NUMBERS);
+                    File.saveToFile(idents, FILE_ID);
                     return;
                 case 1:
                     addNewRecord(idents, names, numbers, day, month, year);
                     break;
                 case 2:
-                    print.printSearchMenu(idents, names, numbers, day, month, year);
+                    Print.printSearchMenu(idents, names, numbers, day, month, year);
                     break;
                 case 3:
-                    print.printAllRecords(idents, names, numbers, day, month, year);
+                    Print.printAllRecords(idents, names, numbers, day, month, year);
                     break;
                 case 4:
-                    print.printAllRecordsSorted(idents, names, numbers, day, month, year);
+                    Print.printAllRecordsSorted(idents, names, numbers, day, month, year);
                     break;
                 case 5:
                     removeRecord(idents,names, numbers, day, month, year);
                     break;
                 case 6:
-                    edit.editRecord(idents, names, numbers, day, month, year);
+                    Edit.editRecord(idents, names, numbers, day, month, year);
                     break;
                 case 7:
-                    print.printDateSorted(idents, names, numbers, day, month, year);
+                    Print.printDateSorted(idents, names, numbers, day, month, year);
                     break;
                 case 8:
-                    FileUtils.writeStringToFile(new File(FILE_CSV), file.bigStringForCsv(idents, names, numbers, day, month, year));
+                    FileUtils.writeStringToFile(new java.io.File(FILE_CSV), File.bigStringForCsv(idents, names, numbers, day, month, year));
                     break;
                 case 9:
                     addingTest(idents, names, numbers, day, month, year);
@@ -99,7 +98,7 @@ public class Main {
         System.out.println("Adding new contact");
         System.out.println("Name?");
         Scanner scanner = new Scanner(System.in);
-        int id = search.findFreeId(idents);
+        int id = Search.findFreeId(idents);
         idents[id] = true;
         String name = scanner.nextLine();
         names[id] = name;
@@ -141,7 +140,7 @@ public class Main {
     public static void addingTest(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
         int count = 0;
         Random random = new Random();
-        int id = search.findFreeId(idents);
+        int id = Search.findFreeId(idents);
         for (; id < idents.length; id = random.nextInt(1000)) {
             idents[id] = true;
             if (count == 0) {
@@ -178,7 +177,7 @@ public class Main {
 
         if (r < MAX && r >= 0) {
             System.out.println("this string will be removed");
-            print.printString(r, names, numbers, day, month, year);
+            Print.printString(r, names, numbers, day, month, year);
             idents[r] = false;
             System.out.println("done");
         }

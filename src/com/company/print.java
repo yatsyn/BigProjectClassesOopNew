@@ -6,7 +6,7 @@ import java.util.Scanner;
 /**
  * Created by ivan on 06.03.2016.
  */
-public class print {
+public class Print {
 
     public static void printAllRecords(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
         printHeader();
@@ -27,7 +27,7 @@ public class print {
     }
 
     public static void printString(int i, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
-        System.out.printf("|%5d|%10s|%15s|%15s\n%50s\n",i,names[i],numbers[i],file.dateToString(year[i], month[i], day[i]),
+        System.out.printf("|%5d|%10s|%15s|%15s\n%50s\n",i,names[i],numbers[i], File.dateToString(year[i], month[i], day[i]),
                 "--------------------------------------------------");
     }
 
@@ -111,10 +111,10 @@ public class print {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("1 for search by ID");
-            System.out.println("2 for search by name");
-            System.out.println("3 for search by number");
-            System.out.println("4 for search by date");
+            System.out.println("1 for Search by ID");
+            System.out.println("2 for Search by name");
+            System.out.println("3 for Search by number");
+            System.out.println("4 for Search by date");
             System.out.println("0 exit");
             System.out.println();
             int menu = Integer.valueOf(Main.returnValidIntFromScanner());
@@ -122,16 +122,16 @@ public class print {
                 case 0:
                     break;
                 case 1:
-                    search.findCustomerId(idents, names, numbers, day, month, year);
+                    Search.findCustomerId(idents, names, numbers, day, month, year);
                     break;
                 case 2:
-                    search.findName(idents, names, numbers, day, month, year);
+                    Search.findName(idents, names, numbers, day, month, year);
                     break;
                 case 3:
-                    search.findNumber(idents, names, numbers, day, month, year);
+                    Search.findNumber(idents, names, numbers, day, month, year);
                     break;
                 case 4:
-                    search.findDate(idents, names, numbers, day, month, year);
+                    Search.findDate(idents, names, numbers, day, month, year);
                     break;
                 default:
                     System.out.println("wrong point in menu");
