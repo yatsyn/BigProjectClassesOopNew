@@ -5,11 +5,11 @@ import java.util.Scanner;
 /**
  * Created by ivan on 06.03.2016.
  */
-public class edit {
+public class Edit {
 
     public static void editRecord(boolean[] idents, String[] names, String[] numbers, int[] day, int[] month, int[] year) {
 
-        System.out.println("enter ID for edit it");
+        System.out.println("enter ID for Edit it");
 
         Scanner scanner = new Scanner(System.in);
         int id = Integer.valueOf(Main.returnValidIntFromScanner());
@@ -47,7 +47,7 @@ public class edit {
             System.out.println("done");
             System.out.println();
         } else {
-            System.out.println("ID not aailable for edit, check it please");
+            System.out.println("ID not aailable for Edit, check it please");
         }
     }
 
