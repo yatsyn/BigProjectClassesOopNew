@@ -12,7 +12,7 @@ public class Contact {
     private int day;
     private int month;
     private int year;
-    public String dateForated;
+    public String dateFormated;
 
     public Contact(String name, String number, int day, int month, int year) {
         this.name = name;
@@ -20,6 +20,7 @@ public class Contact {
         this.day = day;
         this.month = month;
         this.year = year;
+        makeDateFormated();
     }
 
     public static int getId() {
@@ -70,12 +71,13 @@ public class Contact {
         this.year = year;
     }
 
-    public String getDateForated() {
-        return dateForated;
+    public String getDateFormated() {
+        return dateFormated;
     }
 
-    public void setDateForated(String dateForated) {
-        this.dateForated = dateToString(getYear(),getMonth(), getDay());
+    //////////////////Уточнить, что за дичь тут происходтит!!!!!!!!!!!!!!!!!!!!!!!
+    public void makeDateFormated() {
+        this.dateFormated = dateToString(getYear(),getMonth(), getDay());
     }
 
     /////////////////////////DATE TO STRING/////////////////////////////////////////
@@ -96,7 +98,6 @@ public class Contact {
     ////////////////////////////////ADD/////////////////////////////////////////////
 
     public static Contact addNewContact() {
-        Scanner scanner = new Scanner(System.in);
 
         System.out.println("Adding new contact");
         System.out.println("Name?");
@@ -148,8 +149,8 @@ public class Contact {
             }
         }
 
-        int id = Contact.getId() + 1;
-        Contact.setId(id);
+        int id = Contact.getId();
+        Contact.setId(id+1);
 
         Contact contact = new Contact(name, number, d, m, y);
 
