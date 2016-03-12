@@ -1,5 +1,8 @@
 package com.company;
 
+import com.company.edit.Edit;
+import com.company.print.Print;
+import com.company.search.Search;
 import org.apache.commons.io.FileUtils;
 
 import java.io.*;
@@ -24,12 +27,12 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        boolean[] idents = File.initArrBoolFromFile(FILE_ID);
-        String[] names = File.initArrStringFromFile(FILE_NAMES);
-        String[] numbers = File.initArrStringFromFile(FILE_NUMBERS);
-        int[] day = File.initArrIntFromFile(FILE_DAY);
-        int[] month = File.initArrIntFromFile(FILE_MONTH);
-        int[] year = File.initArrIntFromFile(FILE_YEAR);
+        boolean[] idents = com.company.files.File.initArrBoolFromFile(FILE_ID);
+        String[] names = com.company.files.File.initArrStringFromFile(FILE_NAMES);
+        String[] numbers = com.company.files.File.initArrStringFromFile(FILE_NUMBERS);
+        int[] day = com.company.files.File.initArrIntFromFile(FILE_DAY);
+        int[] month = com.company.files.File.initArrIntFromFile(FILE_MONTH);
+        int[] year = com.company.files.File.initArrIntFromFile(FILE_YEAR);
 
         while (true) {
             System.out.println("1 for adding");
@@ -54,12 +57,12 @@ public class Main {
 
             switch (menu) {
                 case 0:
-                    File.saveToFile(year, FILE_YEAR);
-                    File.saveToFile(month, FILE_MONTH);
-                    File.saveToFile(day, FILE_DAY);
-                    File.saveToFile(names, FILE_NAMES);
-                    File.saveToFile(numbers, FILE_NUMBERS);
-                    File.saveToFile(idents, FILE_ID);
+                    com.company.files.File.saveToFile(year, FILE_YEAR);
+                    com.company.files.File.saveToFile(month, FILE_MONTH);
+                    com.company.files.File.saveToFile(day, FILE_DAY);
+                    com.company.files.File.saveToFile(names, FILE_NAMES);
+                    com.company.files.File.saveToFile(numbers, FILE_NUMBERS);
+                    com.company.files.File.saveToFile(idents, FILE_ID);
                     return;
                 case 1:
                     addNewRecord(idents, names, numbers, day, month, year);
@@ -83,7 +86,7 @@ public class Main {
                     Print.printDateSorted(idents, names, numbers, day, month, year);
                     break;
                 case 8:
-                    FileUtils.writeStringToFile(new java.io.File(FILE_CSV), File.bigStringForCsv(idents, names, numbers, day, month, year));
+                    FileUtils.writeStringToFile(new java.io.File(FILE_CSV), com.company.files.File.bigStringForCsv(idents, names, numbers, day, month, year));
                     break;
                 case 9:
                     addingTest(idents, names, numbers, day, month, year);
