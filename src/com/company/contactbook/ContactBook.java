@@ -41,6 +41,17 @@ public class ContactBook {
 
     }
 
+    public static void editContactInBook()   {
+        System.out.printf("%s:\n", "Enter contact number for delete: ");
+        int delNum = Integer.valueOf(Contact.returnValidIntFromScanner());
+        int delId = delNum - 1;
+
+        if (contactBook[delId] != null) {
+            Contact.editContactInfo(contactBook[delId]);
+        }
+
+    }
+
     public static int findFreeId(Contact[] array) {
         for (int i = 0; i < array.length; i++) {
             if (array[i] == null)
@@ -49,6 +60,4 @@ public class ContactBook {
         System.out.println("error");
         return -1;
     }
-
-
 }

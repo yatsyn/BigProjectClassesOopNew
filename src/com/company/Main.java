@@ -58,6 +58,7 @@ public class Main {
                     break;
                 case 6:
                     //edit contact
+                    ContactBook.editContactInBook();
                     break;
                 case 7:
                     //print sorted by date
