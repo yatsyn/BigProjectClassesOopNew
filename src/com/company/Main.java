@@ -53,6 +53,7 @@ public class Main {
                     //print sorted by name
                     break;
                 case 5:
+                    ContactBook.removeContact();
                     //  remove contact
                     break;
                 case 6:

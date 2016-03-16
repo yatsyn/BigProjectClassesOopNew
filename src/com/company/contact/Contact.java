@@ -6,7 +6,6 @@ import java.util.Scanner;
  * Created by ivan on 12.03.2016.
  */
 public class Contact {
-    private static int id = 0;
     private String name;
     private String number;
     private int day;
@@ -21,14 +20,6 @@ public class Contact {
         this.month = month;
         this.year = year;
         makeDateFormated();
-    }
-
-    public static int getId() {
-        return id;
-    }
-
-    public static void setId(int id) {
-        Contact.id = id;
     }
 
     public String getName() {
@@ -149,9 +140,6 @@ public class Contact {
             }
         }
 
-        int id = Contact.getId();
-        Contact.setId(id+1);
-
         Contact contact = new Contact(name, number, d, m, y);
 
         return contact;
@@ -252,13 +240,7 @@ public class Contact {
 
     }
 
-    /////////////////////REMOVE METHOD//////////////////////////////////////////////////
-
-    public static void removeAccount (Contact contact)  {
-        contact = null;
-    }
-
-    /////////////CHECKERS FOR EMPTY INPUT INFO //////////////////////////////////////////
+/////////////CHECKERS FOR EMPTY INPUT INFO //////////////////////////////////////////
 
     public static boolean isStringEmpty(String s) {
         return s == "null" || "".equals(s);
