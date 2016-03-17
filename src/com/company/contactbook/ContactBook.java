@@ -34,7 +34,7 @@ public class ContactBook {
             int searchOption = Integer.valueOf((Contact.returnValidIntFromScanner()));
             switch (searchOption) {
                 case 0:
-                    break;
+                    return;
                 case 1:
                     findContactId();
                     break;
@@ -98,16 +98,16 @@ public class ContactBook {
 
     public static void findContactNumber() {
 
-        String name;
+        String number;
 
         while (true) {
             System.out.println("Enter Number please (enter -1 for exit):");
-            name = Contact.returnValidStringFromScanner();
+            number = Contact.returnValidStringFromScanner();
 
             for (int i = 0; i < contactBook.length; i++) {
-                if (contactBook[i] != null && name.equals(contactBook[i].getName())) {
+                if (contactBook[i] != null && number.equals(contactBook[i].getNumber())) {
                     printString(contactBook[i], i);
-                } else if (name.equals("-1")) {
+                } else if (number.equals("-1")) {
                     return;
                 } else {
                     System.out.println("Not found, sorry");
@@ -118,6 +118,7 @@ public class ContactBook {
     }
 
     public static void findContactDateOfBirth() {
+
 
         System.out.println("day?");
 
@@ -160,17 +161,25 @@ public class ContactBook {
             }
         }
 
-        String findThisDate;
-
         while (true) {
+            String findThisDate;
+            String dateStringForEquals;
+
+
             findThisDate = Contact.dateToString(findThisYear, findThisMonth, findThisDay);
 
             for (int i = 0; i < contactBook.length; i++) {
-                String dateStringForEquals = Contact.dateToString(contactBook[i].getYear(), contactBook[i].getMonth(), contactBook[i].getDay());
-                if (contactBook[i] != null && findThisDate.equals(dateStringForEquals)) {
-                    printString(contactBook[i], i);
-                } else {
-                    System.out.println("Not found, sorry");
+                if (contactBook[i] != null) {
+                    dateStringForEquals = Contact.dateToString(contactBook[i].getYear(), contactBook[i].getMonth(), contactBook[i].getDay());
+
+                    if (findThisDate.equals(dateStringForEquals)) {
+                        printString(contactBook[i], i);
+                    } else {
+                        System.out.println("Not found, sorry");
+                        return;
+                    }
+                }
+                if (i == contactBook.length-1)  {
                     return;
                 }
             }
