@@ -3,7 +3,6 @@ package com.company.contactbook;
 import com.company.Main;
 import com.company.contact.Contact;
 
-import java.util.Scanner;
 
 /**
  * Created by ivan on 12.03.2016.
@@ -237,6 +236,4 @@ public class ContactBook {
         System.out.printf("%d\t%s\t%s\t%s\n", id + 1, contactBook[id].getName(), contactBook[id].getNumber(),
                 contactBook[id].getDateFormated());
     }
-
-
 }
