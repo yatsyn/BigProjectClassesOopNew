@@ -44,6 +44,7 @@ public class Main {
                     ContactBook.addNewContact();
                     break;
                 case 2:
+                    ContactBook.searchByValueMenu();
                     //search
                     break;
                 case 3:
