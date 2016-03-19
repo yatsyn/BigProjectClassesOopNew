@@ -234,6 +234,6 @@ public class ContactBook {
 
     private static void printString(Contact contact, int id) {
         System.out.printf("%d\t%s\t%s\t%s\n", id + 1, contactBook[id].getName(), contactBook[id].getNumber(),
-                contactBook[id].getDateFormated());
+                contactBook[id].getDateFormatted());
     }
 }

@@ -8,12 +8,7 @@ import java.io.*;
 public class Main {
 
     public static int MAX = 1000;
-    public static final String FILE_ID = "File.i";
-    public static final String FILE_NAMES = "File.name";
-    public static final String FILE_NUMBERS = "File.numbers";
-    public static final String FILE_YEAR = "File.y";
-    public static final String FILE_MONTH = "File.m";
-    public static final String FILE_DAY = "File.d";
+    public static final String FILE_CONTACTS = "File.contactBook";
     public static final String NEW_LINE = "\r\n";
     public static final String SEP = ",";
     public static final String FILE_CSV = "File.csv";
