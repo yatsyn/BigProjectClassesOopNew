@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.contact.Contact;
+import com.company.contact.InputChecker;
 import com.company.contactbook.ContactBook;
 
 import java.io.*;
@@ -29,7 +30,7 @@ public class Main {
             System.out.println("0 exit");
             System.out.println();
 
-            int menu = Contact.returnValidIntFromScanner();
+            int menu = InputChecker.returnValidIntFromScanner();
 
             switch (menu) {
                 case 0:

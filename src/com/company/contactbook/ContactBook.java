@@ -1,7 +1,10 @@
 package com.company.contactbook;
 
 import com.company.Main;
+import com.company.contact.AddNewContact;
 import com.company.contact.Contact;
+import com.company.contact.EditContactInfo;
+import com.company.contact.InputChecker;
 
 
 /**
@@ -14,7 +17,7 @@ public class ContactBook {
     public static void addNewContact() {
 
         int id = findFreeId(contactBook);
-        contactBook[id] = Contact.addNewContact();
+        contactBook[id] = AddNewContact.addNewContact();
 
     }
 
@@ -30,7 +33,7 @@ public class ContactBook {
             System.out.println("4 for Search by date");
             System.out.println("0 exit");
             System.out.println();
-            int searchOption = Integer.valueOf((Contact.returnValidIntFromScanner()));
+            int searchOption = Integer.valueOf((InputChecker.returnValidIntFromScanner()));
             switch (searchOption) {
                 case 0:
                     return;
@@ -59,7 +62,7 @@ public class ContactBook {
 
         while (true) {
             System.out.println("Enter Number please (enter -1 for exit):");
-            number = Integer.valueOf(Contact.returnValidIntFromScanner());
+            number = Integer.valueOf(InputChecker.returnValidIntFromScanner());
 
             for (int i = 0; i < contactBook.length; i++) {
                 if (contactBook[number] != null && (number == i)) {
@@ -80,7 +83,7 @@ public class ContactBook {
 
         while (true) {
             System.out.println("Enter Number please (enter -1 for exit):");
-            number = Contact.returnValidStringFromScanner();
+            number = InputChecker.returnValidStringFromScanner();
 
             for (int i = 0; i < contactBook.length; i++) {
                 if (contactBook[i] != null && number.equals(contactBook[i].getName())) {
@@ -101,7 +104,7 @@ public class ContactBook {
 
         while (true) {
             System.out.println("Enter Number please (enter -1 for exit):");
-            number = Contact.returnValidStringFromScanner();
+            number = InputChecker.returnValidStringFromScanner();
 
             for (int i = 0; i < contactBook.length; i++) {
                 if (contactBook[i] != null && number.equals(contactBook[i].getNumber())) {
@@ -124,7 +127,7 @@ public class ContactBook {
         int findThisDay = 0;
 
         while (findThisDay == 0) {
-            int uncheckedDay = Contact.returnValidIntFromScanner();
+            int uncheckedDay = InputChecker.returnValidIntFromScanner();
             if (uncheckedDay > 0 && uncheckedDay < 32) {
                 findThisDay = uncheckedDay;
             } else {
@@ -137,7 +140,7 @@ public class ContactBook {
         int findThisMonth = 0;
 
         while (findThisMonth == 0) {
-            int uncheckedMonth = Contact.returnValidIntFromScanner();
+            int uncheckedMonth = InputChecker.returnValidIntFromScanner();
 
             if (uncheckedMonth > 0 && uncheckedMonth < 13) {
                 findThisMonth = uncheckedMonth;
@@ -151,7 +154,7 @@ public class ContactBook {
         int findThisYear = 3000;
 
         while (findThisYear == 3000) {
-            int uncheckedYear = Contact.returnValidIntFromScanner();
+            int uncheckedYear = InputChecker.returnValidIntFromScanner();
 
             if (uncheckedYear < 3000) {
                 findThisYear = uncheckedYear;
@@ -199,7 +202,7 @@ public class ContactBook {
 
     public static void removeContact() {
         System.out.printf("%s:\n", "Enter contact number for delete: ");
-        int delNum = Integer.valueOf(Contact.returnValidIntFromScanner());
+        int delNum = Integer.valueOf(InputChecker.returnValidIntFromScanner());
         int delId = delNum - 1;
 
         if (contactBook[delId] != null) {
@@ -212,11 +215,11 @@ public class ContactBook {
 
     public static void editContactInBook() {
         System.out.printf("%s:\n", "Enter contact number for delete: ");
-        int delNum = Integer.valueOf(Contact.returnValidIntFromScanner());
+        int delNum = Integer.valueOf(InputChecker.returnValidIntFromScanner());
         int delId = delNum - 1;
 
         if (contactBook[delId] != null) {
-            Contact.editContactInfo(contactBook[delId]);
+            EditContactInfo.editContactInfo(contactBook[delId]);
         }
 
     }
