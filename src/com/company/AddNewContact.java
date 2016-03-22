@@ -1,10 +1,12 @@
-package com.company.contact;
+package com.company;
 
 /**
  * Created by ivan on 19.03.2016.
  */
-public  class AddNewContact {
-    public static Contact addNewContact() {
+public class AddNewContact {
+
+    public static void addNewContact() {
+
 
         System.out.println("Adding new contact");
         System.out.println("Name?");
@@ -56,11 +58,22 @@ public  class AddNewContact {
             }
         }
 
-        Contact contact = new Contact(name, number, d, m, y);
+        int id = findFreeId(ContactBook.arrayOfContacts);
 
-        return contact;
+        ContactBook.arrayOfContacts[id] = new Contact(name, number, d, m, y);
 
     }
 
+
+    public static int findFreeId(Contact[] array) {
+        for (int i = 0; i < Main.MAX; i++) {
+            if ((array[i]) == null) {
+                return i;
+            }
+
+        }
+        System.out.println("error");
+        return -1;
+    }
 
 }

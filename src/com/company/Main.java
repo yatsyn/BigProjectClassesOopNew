@@ -1,12 +1,11 @@
 package com.company;
 
-import com.company.contact.Contact;
-import com.company.contact.InputChecker;
-import com.company.contactbook.ContactBook;
+
+import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 
-public class Main {
+public class Main implements Serializable{
 
     public static int MAX = 1000;
     public static final String FILE_CONTACTS = "File.contactBook";
@@ -14,8 +13,9 @@ public class Main {
     public static final String SEP = ",";
     public static final String FILE_CSV = "File.csv";
 
-
     public static void main(String[] args) throws IOException, ClassNotFoundException {
+
+        ContactBook.createContactBook();
 
         while (true) {
             System.out.println("1 for adding");
@@ -24,9 +24,7 @@ public class Main {
             System.out.println("4 Print sorted menu");
             System.out.println("5 for delete");
             System.out.println("6 Edit menu");
-            System.out.println("7 sort by date of birthday");
-            System.out.println("8 export to exel File");
-            System.out.println("9 for test account");
+            System.out.println("7 export to exel File");
             System.out.println("0 exit");
             System.out.println();
 
@@ -34,35 +32,32 @@ public class Main {
 
             switch (menu) {
                 case 0:
-                    //com.company.files.File.saveToFile(idents, FILE_ID);
+                    File.saveToFile(ContactBook.arrayOfContacts, FILE_CONTACTS);
                     return;
                 case 1:
-                    ContactBook.addNewContact();
+                    AddNewContact.addNewContact();
                     break;
                 case 2:
-                    ContactBook.searchByValueMenu();
+                    SearchContact.searchByValueMenu();
                     //search
                     break;
                 case 3:
-                    ContactBook.printAllContacts();
+                    PrintServicesForContactBook.printAllContacts();
                     break;
                 case 4:
-                    //print sorted by name
+                    SortContactBook.sortByValueMenu();
                     break;
                 case 5:
-                    ContactBook.removeContact();
+                    RemoeAccount.removeContact();
                     //  remove contact
                     break;
                 case 6:
                     //edit contact
-                    ContactBook.editContactInBook();
+                    EditContactsInBook.editContactInBook();
                     break;
                 case 7:
-                    //print sorted by date
-                    break;
-                case 8:
                     //save to file
-                    //FileUtils.writeStringToFile(new java.io.File(FILE_CSV), com.company.files.File.bigStringForCsv(idents, names, numbers, day, month, year));
+                    FileUtils.writeStringToFile(new java.io.File(FILE_CSV), File.bigStringForCsv());
                     break;
                 case 9:
                     //add test accounts

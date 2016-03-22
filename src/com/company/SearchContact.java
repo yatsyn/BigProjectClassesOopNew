@@ -1,28 +1,9 @@
-package com.company.contactbook;
-
-import com.company.Main;
-import com.company.contact.AddNewContact;
-import com.company.contact.Contact;
-import com.company.contact.EditContactInfo;
-import com.company.contact.InputChecker;
-
+package com.company;
 
 /**
- * Created by ivan on 12.03.2016.
+ * Created by ivan on 19.03.2016.
  */
-public class ContactBook {
-
-    private static Contact[] contactBook = new Contact[Main.MAX];
-
-    public static void addNewContact() {
-
-        int id = findFreeId(contactBook);
-        contactBook[id] = AddNewContact.addNewContact();
-
-    }
-
-    /////////////////////////////SEARCH////////////////////////////////
-
+public class SearchContact {
     public static void searchByValueMenu() {
 
         while (true) {
@@ -62,11 +43,11 @@ public class ContactBook {
 
         while (true) {
             System.out.println("Enter Number please (enter -1 for exit):");
-            number = Integer.valueOf(InputChecker.returnValidIntFromScanner());
+            number = Integer.valueOf(InputChecker.returnValidStringFromScanner());
 
-            for (int i = 0; i < contactBook.length; i++) {
-                if (contactBook[number] != null && (number == i)) {
-                    printString(contactBook[i], i);
+            for (int i = 0; i < ContactBook.arrayOfContacts.length; i++) {
+                if (ContactBook.arrayOfContacts[number] != null && (number == i)) {
+                    PrintServicesForContactBook.printString(ContactBook.arrayOfContacts[i], i);
                 } else if (number == -1) {
                     return;
                 } else {
@@ -82,15 +63,18 @@ public class ContactBook {
         String number;
 
         while (true) {
-            System.out.println("Enter Number please (enter -1 for exit):");
+            System.out.println("Enter Name please (enter -1 for exit):");
             number = InputChecker.returnValidStringFromScanner();
 
-            for (int i = 0; i < contactBook.length; i++) {
-                if (contactBook[i] != null && number.equals(contactBook[i].getName())) {
-                    printString(contactBook[i], i);
+            int r = 0;
+
+            for (int i = 0; i < ContactBook.arrayOfContacts.length; i++) {
+                if (ContactBook.arrayOfContacts[i] != null && number.equals(ContactBook.arrayOfContacts[i].getName())) {
+                    PrintServicesForContactBook.printString(ContactBook.arrayOfContacts[i], i);
+                    r++;
                 } else if (number.equals("-1")) {
                     return;
-                } else {
+                } else if (r == 0) {
                     System.out.println("Not found, sorry");
                     return;
                 }
@@ -106,12 +90,15 @@ public class ContactBook {
             System.out.println("Enter Number please (enter -1 for exit):");
             number = InputChecker.returnValidStringFromScanner();
 
-            for (int i = 0; i < contactBook.length; i++) {
-                if (contactBook[i] != null && number.equals(contactBook[i].getNumber())) {
-                    printString(contactBook[i], i);
+            int r = 0;
+
+            for (int i = 0; i < ContactBook.arrayOfContacts.length; i++) {
+                if (ContactBook.arrayOfContacts[i] != null && number.equals(ContactBook.arrayOfContacts[i].getNumber())) {
+                    PrintServicesForContactBook.printString(ContactBook.arrayOfContacts[i], i);
+                    r++;
                 } else if (number.equals("-1")) {
                     return;
-                } else {
+                } else if (r == 0) {
                     System.out.println("Not found, sorry");
                     return;
                 }
@@ -170,73 +157,23 @@ public class ContactBook {
 
             findThisDate = Contact.dateToString(findThisYear, findThisMonth, findThisDay);
 
-            for (int i = 0; i < contactBook.length; i++) {
-                if (contactBook[i] != null) {
-                    dateStringForEquals = Contact.dateToString(contactBook[i].getYear(), contactBook[i].getMonth(), contactBook[i].getDay());
+            int r = 0;
 
+            for (int i = 0; i < ContactBook.arrayOfContacts.length; i++) {
+                if (ContactBook.arrayOfContacts[i] != null) {
+                    dateStringForEquals = Contact.dateToString(ContactBook.arrayOfContacts[i].getYear(), ContactBook.arrayOfContacts[i].getMonth(), ContactBook.arrayOfContacts[i].getDay());
+                    r++;
                     if (findThisDate.equals(dateStringForEquals)) {
-                        printString(contactBook[i], i);
-                    } else {
+                        PrintServicesForContactBook.printString(ContactBook.arrayOfContacts[i], i);
+                    } else if (r == 0) {
                         System.out.println("Not found, sorry");
                         return;
                     }
                 }
-                if (i == contactBook.length-1)  {
+                if (i == ContactBook.arrayOfContacts.length - 1) {
                     return;
                 }
             }
         }
-    }
-
-
-    /////////////////////////////////////////////////////////////////////////////////////////
-    public static void printAllContacts() {
-
-        for (int i = 0; i < contactBook.length; i++) {
-            if (contactBook[i] != null) {
-                printString(contactBook[i], i);
-            }
-        }
-
-    }
-
-    public static void removeContact() {
-        System.out.printf("%s:\n", "Enter contact number for delete: ");
-        int delNum = Integer.valueOf(InputChecker.returnValidIntFromScanner());
-        int delId = delNum - 1;
-
-        if (contactBook[delId] != null) {
-            contactBook[delId] = null;
-        } else {
-            System.out.println("Invalid number");
-        }
-
-    }
-
-    public static void editContactInBook() {
-        System.out.printf("%s:\n", "Enter contact number for delete: ");
-        int delNum = Integer.valueOf(InputChecker.returnValidIntFromScanner());
-        int delId = delNum - 1;
-
-        if (contactBook[delId] != null) {
-            EditContactInfo.editContactInfo(contactBook[delId]);
-        }
-
-    }
-
-    public static int findFreeId(Contact[] array) {
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] == null)
-                return i;
-        }
-        System.out.println("error");
-        return -1;
-    }
-
-    /////////////////////////////////////Print///////////////////////
-
-    private static void printString(Contact contact, int id) {
-        System.out.printf("%d\t%s\t%s\t%s\n", id + 1, contactBook[id].getName(), contactBook[id].getNumber(),
-                contactBook[id].getDateFormatted());
     }
 }
